@@ -1,11 +1,13 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5555';
 
-export const makeRequest = async (message) => {
+const API_URL = 'http://localhost:5000/api/prompt';
+
+const makeRequest = async (message) => {
   try {
-    
+    console.log("Sending message:", message);
     const {data} = await axios.post(API_URL, message);
+    
     return data;
 
   } catch (error) {
@@ -15,3 +17,4 @@ export const makeRequest = async (message) => {
 
   }
 };
+export default makeRequest;

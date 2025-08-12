@@ -1,7 +1,7 @@
 import React from "react";
 import './SideMenu.css';
 
- export const SideMenu = () => {
+const SideMenu = () => {
   return (
     <aside className="sidemenu">
         <div className="sidemenu-button">
@@ -13,4 +13,4 @@ import './SideMenu.css';
   );
 }
 
-
+export default SideMenu;

@@ -1,24 +1,24 @@
 import './styles/App.css';
 import './styles/reset.css';
-import { makeRequest } from './api/api';
+import makeRequest  from './api/api';
 import {useState} from 'react';
-import {SideMenu} from './components/SideMenu/SideMenu';
-import {ChatMessage} from './components/ChatMessage/ChatMessage';
+import SideMenu from './components/SideMenu/SideMenu';
+import ChatMessage from './components/ChatMessage/ChatMessage';
 
 function App() {
   const [input, setInput] = useState("");
   const [chatlog, setChatlog] = useState([
     {
       user:"gpt",
-      message:"Hello, how can I assist you today?"
+      message:"Oi, Como posso ajudar voce hoje?"
     }
   ]);
 
   async function handleSubmit(event) {
     event.preventDefault();
 
-    let response = await makeRequest({ prompt: input });
-
+    let response = await makeRequest({prompt: input});
+                    console.log("Response from OpenAI:", response);
     response = response.data.split('\n').map(line => <p>{line}</p>);
     // Update chatlog with the new message from the user and the response from GPT
     setChatlog([...chatlog, {
@@ -47,7 +47,7 @@ function App() {
             ))}
           </div>
 
-          <div className="chat-input-holder">
+          <div className='chat-input-holder'>
            <form onSubmit={handleSubmit}>
               <input
                 rows='1'
@@ -57,7 +57,7 @@ function App() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
               />
-             
+            
            </form>
           </div>
         </section>
